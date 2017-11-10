@@ -5,4 +5,10 @@ package id.lionze.mbadventure;
  */
 
 public class PlayerStatus {
+    private double clickDamage = 10;
+
+    public double getClickDamage(){
+        return  this.clickDamage;
+    }
+
 }
