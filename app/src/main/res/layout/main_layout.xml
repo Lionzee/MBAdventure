@@ -1,33 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <SurfaceView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-    <Button
-        android:id="@+id/btnClick"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="HIT!"
-        android:layout_above="@+id/progressBar"
+    <RelativeLayout
+        android:id="@+id/click_layout"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:clickable="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="37dp" />
+        android:layout_marginTop="76dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:id="@+id/ivHead" />
+
+        <ImageView
+            android:id="@+id/ivLeftHand"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/ivHead"
+            android:layout_toLeftOf="@+id/ivHead"
+            android:layout_toStartOf="@+id/ivHead" />
+
+        <ImageView
+            android:id="@+id/ivRightHand"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/ivHead"
+            android:layout_toEndOf="@+id/ivHead"
+            android:layout_toRightOf="@+id/ivHead" />
+
+        <ImageView
+            android:id="@+id/ivBody"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/ivHead"
+            android:layout_toEndOf="@+id/ivLeftHand"
+            android:layout_toRightOf="@+id/ivLeftHand" />
+
+        <ImageView
+            android:id="@+id/ivFoot"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/ivRightHand"
+            android:layout_toEndOf="@+id/ivLeftHand"
+            android:layout_toRightOf="@+id/ivLeftHand" />
+
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="32dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/click_layout"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
         />
 
-
+    <TextView
+        android:id="@+id/hpDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="TextView" />
 
 
 </RelativeLayout>

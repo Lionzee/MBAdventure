@@ -2,6 +2,7 @@ package id.lionze.mbadventure;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -14,14 +15,17 @@ public class MonsterStatus {
 
     private static Context c;
     private String monsterName;
-    double   monsterHP = 50;
+    double baseHp = 50;
+    double   monsterHP = baseHp;
     double currentHP = monsterHP;
     public boolean isAlive;
     private int currentStage = 1;
+    private int currentLevel = 1;
     private int headID,bodyID,armsID,legsID;
 
     public MonsterStatus(Context _c){
         c = _c;
+        monsterHP = baseHp;
     }
 
     public int getStage(){
@@ -29,16 +33,27 @@ public class MonsterStatus {
     }
 
     public void setMonsterHP(){
-
-        if(currentStage < 11){
-            monsterHP = 50;
-            currentHP = monsterHP;
-        } else if(currentStage > 10 && currentStage < 21){
-            monsterHP = 100;
-            currentHP = monsterHP;
-        }
-
+        monsterHP = baseHp * currentLevel;
+        currentHP = monsterHP;
+        Toast.makeText(c, "Stage " + Integer.toString(currentStage), Toast.LENGTH_SHORT).show();
+        currentStage += 1;
     }
+
+    public void setBossHP(){
+        monsterHP = (baseHp * currentLevel) * 10;
+        currentHP = monsterHP;
+        Toast.makeText(c,"You are fighting the level " + Integer.toString(currentLevel) + " Boss",Toast.LENGTH_LONG).show();
+        currentStage = 1;
+        currentLevel += 1;
+    }
+
+    public String hpUpdate(){
+        String displayHP;
+        displayHP = Double.toString(currentHP) + "/" + Double.toString(monsterHP);
+
+        return displayHP;
+    }
+
 
     public double getMonsterHP(){
         return monsterHP;
@@ -50,12 +65,15 @@ public class MonsterStatus {
         Log.i("Click Power ",Double.toString(_clickPower));
         Log.i("Current Hp",Double.toString(currentHP));
         if(currentHP <= 0){
-            currentStage += 1;
-            Log.i("Stage",Integer.toString(currentStage));
-            setMonsterHP();
-            Toast.makeText(c, "Current Stage : " + Integer.toString(currentStage), Toast.LENGTH_SHORT).show();
+            if(currentStage <= 10){
+                setMonsterHP();
+            }else {
+                setBossHP();
+            }
+
         }
     }
+
 
 
 
