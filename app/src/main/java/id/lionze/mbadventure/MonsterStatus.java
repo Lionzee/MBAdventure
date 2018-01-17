@@ -5,6 +5,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 /**
  * Created by Lionze on 27 Okt 2017.
  */
@@ -21,30 +23,49 @@ public class MonsterStatus {
     public boolean isAlive;
     private int currentStage = 1;
     private int currentLevel = 1;
-    private int headID,bodyID,armsID,legsID;
+    private int randomMonster = 0;
+    private boolean isBossStage = false;
+    private int totalScore = 0;
 
     public MonsterStatus(Context _c){
         c = _c;
         monsterHP = baseHp;
     }
 
+    public boolean getBossStatus(){
+        return isBossStage;
+    }
+
+    public void setBossStage(boolean stat){
+        isBossStage = stat;
+    }
+
+    public void setCurrentStage(int stage){
+        currentStage = stage;
+    }
+
+    public int getTotalScore(){
+        return totalScore;
+    }
+
     public int getStage(){
         return currentStage;
     }
+    public void setCurrentLevel(int level){
+        currentLevel = level;
+    }
+    public  int getCurrentLevel(){return currentLevel;}
 
     public void setMonsterHP(){
         monsterHP = baseHp * currentLevel;
         currentHP = monsterHP;
-        Toast.makeText(c, "Stage " + Integer.toString(currentStage), Toast.LENGTH_SHORT).show();
-        currentStage += 1;
+
     }
 
     public void setBossHP(){
         monsterHP = (baseHp * currentLevel) * 10;
         currentHP = monsterHP;
-        Toast.makeText(c,"You are fighting the level " + Integer.toString(currentLevel) + " Boss",Toast.LENGTH_LONG).show();
-        currentStage = 1;
-        currentLevel += 1;
+
     }
 
     public String hpUpdate(){
@@ -60,15 +81,31 @@ public class MonsterStatus {
     }
     public double getCurrentHP(){return currentHP;}
 
+    public int getRandomMonster(){ return randomMonster;}
+
     public void onClick(Double _clickPower){
         currentHP -= _clickPower;
         Log.i("Click Power ",Double.toString(_clickPower));
         Log.i("Current Hp",Double.toString(currentHP));
         if(currentHP <= 0){
-            if(currentStage <= 10){
+            totalScore += monsterHP / 10;
+            Random rand = new Random();
+            randomMonster = rand.nextInt(7);
+
+
+
+            if(currentStage >= 1 && currentStage <= 9){
+                currentStage += 1;
                 setMonsterHP();
-            }else {
+            }else if (currentStage == 10){
+                currentStage = 0;
                 setBossHP();
+                isBossStage = true;
+            }else if(currentStage == 0 && isBossStage == true){
+                currentStage += 1;
+                currentLevel += 1;
+                setMonsterHP();
+                isBossStage = false;
             }
 
         }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:background="@drawable/mojba"/>
+
+        <Button
+            android:id="@+id/btnToGameplay"
+            android:layout_width="300dp"
+            android:background="@drawable/button"
+            android:layout_height="100dp"
+            android:text="PLAY"
+            android:textSize="50dp"
+            android:textColor="#FFFF"/>
+
+
+
+        <Button
+            android:id="@+id/btnToCredit"
+            android:layout_width="200dp"
+            android:background="@drawable/button"
+            android:layout_height="50dp"
+            android:textColor="#ffff"
+            android:text="CREDIT"
+            android:textSize="25dp"
+            />
+
+        <Button
+            android:id="@+id/btnTzoExit"
+            android:layout_width="150dp"
+            android:text="EXIT"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            android:background="@drawable/button"
+            android:layout_height="40dp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -2,78 +2,132 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    >
 
-    <RelativeLayout
-        android:id="@+id/click_layout"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:clickable="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        <TextView
+
+            android:id="@+id/hpDisplay"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:text="TextView" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/CustomProgressBar"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/click_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1" />
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtlevel"
+            android:textColor="#ffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level : -- "/>
+
+        <TextView
+            android:id="@+id/txtstage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stage : --"
+            android:textColor="#ffff"/>
+
+        <RelativeLayout
+            android:id="@+id/click_layout"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:id="@+id/ivHead" />
+            android:layout_marginTop="30dp"
+            android:clickable="true">
 
-        <ImageView
-            android:id="@+id/ivLeftHand"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/ivHead"
-            android:layout_toLeftOf="@+id/ivHead"
-            android:layout_toStartOf="@+id/ivHead" />
 
-        <ImageView
-            android:id="@+id/ivRightHand"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/ivHead"
-            android:layout_toEndOf="@+id/ivHead"
-            android:layout_toRightOf="@+id/ivHead" />
+            <ImageView
+                android:id="@+id/ivMonster"
+                android:layout_width="200dp"
+                android:layout_height="400dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                />
 
-        <ImageView
-            android:id="@+id/ivBody"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/ivHead"
-            android:layout_toEndOf="@+id/ivLeftHand"
-            android:layout_toRightOf="@+id/ivLeftHand" />
+            <ImageView
+                android:id="@+id/ivSlash"
+                android:layout_width="200dp"
+                android:layout_height="400dp"
+                android:layout_centerInParent="true"/>
 
-        <ImageView
-            android:id="@+id/ivFoot"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/ivRightHand"
-            android:layout_toEndOf="@+id/ivLeftHand"
-            android:layout_toRightOf="@+id/ivLeftHand" />
+        </RelativeLayout>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            >
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/click_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        />
+            <Button
+                android:id="@+id/DDbtn"
+                android:background="@drawable/button"
+                android:layout_width="150dp"
+                android:textColor="#ffff"
+                android:layout_height="40dp"
+                android:layout_below="@+id/button2"
+                android:layout_centerHorizontal="true"
+                android:text="Double Damage" />
 
-    <TextView
-        android:id="@+id/hpDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progressBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/timedisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#ffff"
+                android:text="00"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/scoreDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textColor="#ffff"
+                android:text="SCORE : 00"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
 
 
 </RelativeLayout>
